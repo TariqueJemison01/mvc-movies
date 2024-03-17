@@ -28,3 +28,4 @@ C:\Users\jemis\Desktop\Projects\COMP367\MVCMovie\obj\Debug\net8.0\refint\MVCMovi
 C:\Users\jemis\Desktop\Projects\COMP367\MVCMovie\obj\Debug\net8.0\MVCMovie.pdb
 C:\Users\jemis\Desktop\Projects\COMP367\MVCMovie\obj\Debug\net8.0\MVCMovie.genruntimeconfig.cache
 C:\Users\jemis\Desktop\Projects\COMP367\MVCMovie\obj\Debug\net8.0\ref\MVCMovie.dll
+C:\Users\jemis\Desktop\Projects\COMP367\MVCMovie\obj\Debug\net8.0\MVCMovie.sourcelink.json
