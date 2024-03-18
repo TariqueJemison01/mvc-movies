@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace MVCMovie.Controllers
 {
+    //HomeController.cs
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
