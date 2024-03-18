@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVCMovie.Data;
 using MvcMovie.Models;
+using MVCMovie.Models;
 
 namespace MVCMovie.Controllers
 {
@@ -20,21 +21,39 @@ namespace MVCMovie.Controllers
         }
 
         // GET: Movies
+<<<<<<< HEAD
         public async Task<IActionResult> Index(string searchString)
+=======
+        // GET: Movies
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
+>>>>>>> iteration2
         {
             if (_context.Movie == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
+<<<<<<< HEAD
             //create a LINQ query to select the movies
             var movies = from m in _context.Movie
                          select m;
 
             if (!String.IsNullOrEmpty(searchString))
+=======
+
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Movie
+                                            orderby m.Genre
+                                            select m.Genre;
+            var movies = from m in _context.Movie
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+>>>>>>> iteration2
             {
                 movies = movies.Where(s => s.Title!.Contains(searchString));
             }
 
+<<<<<<< HEAD
             return View(await movies.ToListAsync());
         }
 
@@ -42,6 +61,20 @@ namespace MVCMovie.Controllers
         public string Index(string searchString, bool notUsed)
         {
             return "From [HttpPost]Index: filter on " + searchString;
+=======
+            if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Genre == movieGenre);
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Movies = await movies.ToListAsync()
+            };
+
+            return View(movieGenreVM);
+>>>>>>> iteration2
         }
 
         // GET: Movies/Details/5
@@ -98,6 +131,12 @@ namespace MVCMovie.Controllers
                 return NotFound();
             }
             return View(movie);
+        }
+
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         // POST: Movies/Edit/5
